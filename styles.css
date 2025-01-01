@@ -2,9 +2,9 @@
 
 /* hsl(224, 82%, 56%) */
 /* hsl(223, 49%, 34% */
-/* Footer  
-/* Icons  */
+
 :root {
   --footer: hsl(221, 24%, 20%);
   --Icons: hsl(328, 100%, 50%);
+  --gradient-bg: linear-gradient(90deg, hsl(224, 82%, 56%), hsl(223, 49%, 34%));
 }
