@@ -116,3 +116,10 @@ main {
   font-size: 2rem;
   padding: 20px;
 }
+
+/* sections */
+section {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+}
