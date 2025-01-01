@@ -22,4 +22,48 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background-image: var(--gradient-bg);
+  top: 0;
+  position: sticky;
+}
+nav ul a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.account .login {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(90deg, hsl(328, 100%, 50%), hsl(223, 49%, 34%));
+  padding: 10px 20px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.account .login:hover {
+  background: linear-gradient(90deg, hsl(328, 100%, 50%), hsl(224, 82%, 56%));
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+.free {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  color: rgb(10, 10, 10);
+  padding: 10px 20px;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: hsl(149, 81%, 63%) !important;
+}
+.free:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
