@@ -25,6 +25,7 @@ nav {
   background-image: var(--gradient-bg);
   top: 0;
   position: sticky;
+  padding: 0 0.8em;
 }
 nav ul a {
   text-decoration: none;
@@ -101,7 +102,7 @@ main {
   font-size: 40px;
 }
 .right {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+  background-image: linear-gradient(rgba(8, 19, 39, 0.7), rgba(5, 39, 117, 0.7)),
     url("/public/top-developers.png");
   background-size: cover;
   background-position: center;
