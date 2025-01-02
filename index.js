@@ -19,6 +19,8 @@ const renderPricingCards = async (data) => {
   }
 };
 
+function createPricingCard({ heading, price, description, btnText }) {}
+
 function main() {
   renderPricingCards(url);
 }
