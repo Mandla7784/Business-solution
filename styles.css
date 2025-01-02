@@ -122,9 +122,11 @@ section {
   width: 100%;
   height: 50vh;
   display: flex;
+  gap: 2em;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 2em 0;
 }
 
 /* Footer */
@@ -202,15 +204,50 @@ section {
   color: #0073e6;
 }
 
-/* Responsiveness */
-@media (max-width: 768px) {
-  .footer-section {
-    width: 48%;
-  }
+/* Products */
+.products {
+  background-color: black !important;
+  height: 100vh;
+  text-align: center;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  font-family: "Poppins", sans-serif;
 }
 
-@media (max-width: 480px) {
-  .footer-section {
-    width: 100%;
-  }
+.products h2 {
+  font-size: 2rem;
+  color: #333;
+}
+
+.products h3 {
+  font-size: 1.2rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1.5rem;
+  align-items: center;
+  justify-items: center;
+}
+
+.product-item {
+  background: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.product-item img {
+  max-width: 100%;
+  height: auto;
 }

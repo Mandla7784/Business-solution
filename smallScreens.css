@@ -1,0 +1,12 @@
+/* Responsiveness */
+@media (max-width: 768px) {
+  .footer-section {
+    width: 48%;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-section {
+    width: 100%;
+  }
+}
