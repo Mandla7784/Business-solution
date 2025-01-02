@@ -19,7 +19,16 @@ const renderPricingCards = async (data) => {
   }
 };
 
-function createPricingCard({ heading, price, description, btnText }) {}
+/**
+ *
+ * @param {object} param
+ * This is to create the cards by  generating  HTML structure
+ *
+ */
+function createPricingCard({ heading, price, description, btnText }) {
+  // Create card container
+  const card = document.createElement("div");
+}
 
 function main() {
   renderPricingCards(url);
