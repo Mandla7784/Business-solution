@@ -1,0 +1,28 @@
+{
+  "pricing": [
+    {
+      "heading": "Free",
+      "price": 0,
+      "description": "All the basic features that help you discover, predict, and remediate errors",
+      "btnText": "Get Started"
+    },
+    {
+      "heading": "Essential",
+      "price": 29,
+      "description": "Core features for individuals and small teams with advanced analytics",
+      "btnText": "Choose Essential"
+    },
+    {
+      "heading": "Advanced",
+      "price": 99,
+      "description": "Comprehensive tools for growing teams with customization options and priority support",
+      "btnText": "Start Free Trial"
+    },
+    {
+      "heading": "Enterprise",
+      "price": "Contact Us",
+      "description": "Tailored solutions for large organizations, with dedicated support and scalability",
+      "btnText": "Get in Touch "
+    }
+  ]
+}
