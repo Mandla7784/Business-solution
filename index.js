@@ -5,6 +5,7 @@
  * This function fetches card data from json file
  */
 const url = "/data/Pricing.json";
+const pricngContainer = document.querySelector(".pricng-container");
 const renderPricingCards = async (data) => {
   try {
     const response = await fetch(data);
@@ -12,7 +13,11 @@ const renderPricingCards = async (data) => {
     if (response.ok) {
       const data = await response.json();
       const cardsData = data["pricing"];
-      console.log(cardsData);
+
+      cardsData.forEach((item) => {
+        const pricingCard = createPricingCard(item);
+        pricngContainer.appendChild(pricingCard);
+      });
 
       return cardsData;
     }
