@@ -1,0 +1,72 @@
+:root {
+  --footer: hsl(221, 24%, 20%);
+  --Icons: hsl(328, 100%, 50%);
+  --gradient-bg: linear-gradient(90deg, hsl(224, 82%, 56%), hsl(223, 49%, 34%));
+}
+
+/* Pricing container */
+.pricing-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Pricing card */
+.pricing-card {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 450px;
+}
+
+.pricing-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Card heading */
+.pricing-card-heading {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Card price */
+.pricing-card-price {
+  font-size: 3rem;
+  font-weight: bold;
+  color: hsl(223, 49%, 34%);
+  margin-bottom: 15px;
+}
+
+/* Card description */
+.pricing-card-description {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* Card button */
+.pricing-card-button {
+  background-image: var(--gradient-bg);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.pricing-card-button:hover {
+  background-image: var(--gradient-bg);
+}
