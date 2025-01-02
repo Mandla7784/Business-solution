@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
 
 /* hsl(224, 82%, 56%) */
 /* hsl(223, 49%, 34% */
@@ -27,6 +27,7 @@ nav {
   position: sticky;
   padding: 0 0.8em;
   z-index: 1000;
+  font-family: "Roboto", serif !important;
 }
 nav ul a {
   text-decoration: none;
