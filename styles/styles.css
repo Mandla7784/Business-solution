@@ -226,6 +226,7 @@ section {
   padding: 2rem;
   background-color: #f8f9fa;
   font-family: "Poppins", sans-serif;
+  margin-bottom: 250px;
 }
 
 .products h2 {
@@ -271,6 +272,7 @@ section {
   align-items: center;
   gap: 20px;
   width: 100%;
+  margin-bottom: 300px;
 }
 .options i {
   font-size: 200px;
