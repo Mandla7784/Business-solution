@@ -343,3 +343,9 @@ section {
 .cta-button:hover {
   background: #f1f1f1;
 }
+
+@media screen and (max-width: 600px) {
+  nav {
+    flex-direction: column;
+  }
+}
