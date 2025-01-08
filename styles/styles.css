@@ -54,6 +54,7 @@ nav ul a {
   right: 10px;
   color: white;
   cursor: pointer;
+  display: none;
 }
 
 .account .login {
@@ -236,7 +237,11 @@ section {
 /* Products */
 .products {
   background-color: black !important;
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 200vh !important ;
   text-align: center;
   padding: 2rem;
   background-color: #f8f9fa;
@@ -296,7 +301,7 @@ section {
 
 .solutions {
   width: 100%;
-  height: 100vh;
+  height: 150vh;
   background: var(--bg);
 }
 
@@ -306,7 +311,7 @@ section {
   text-align: center;
   padding: 50px 20px;
   width: 100%;
-  height: 100vh;
+  height: 150vh;
 }
 
 .enterprise h2 {
@@ -370,6 +375,10 @@ section {
     align-items: start;
     height: 400px;
     transition: all ease-in 0.3s;
+    display: none;
+  }
+  #menuIcon {
+    display: block;
   }
   .account {
     margin-top: 20px;
@@ -381,5 +390,21 @@ section {
   }
   .nav-container ul {
     flex-direction: column;
+  }
+
+  /* Main  */
+  main .left {
+    display: none;
+  }
+  main .right {
+    width: 100%;
+    background-color: hsl(328, 100%, 50%);
+  }
+  main .right h1 {
+    font-size: 24px;
+    width: 80%;
+  }
+  .product-grid {
+    grid-template-columns: 200px;
   }
 }
