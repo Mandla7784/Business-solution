@@ -375,7 +375,6 @@ section {
     align-items: start;
     height: 400px;
     transition: all ease-in 0.3s;
-    display: none;
   }
   #menuIcon {
     display: block;
