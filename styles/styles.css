@@ -156,6 +156,9 @@ section {
   height: 100vh;
   display: flex;
 
+  justify-content: center;
+  align-items: center;
+
   gap: 1.5em;
   padding: 2em;
 }
@@ -364,6 +367,15 @@ section {
   background: #f1f1f1;
 }
 
+.Pricing {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
 @media screen and (max-width: 600px) {
   .logo {
     font-size: 16px;
@@ -390,7 +402,9 @@ section {
   .nav-container ul {
     flex-direction: column;
   }
-
+  .options {
+    flex-direction: column;
+  }
   /* Main  */
   main .left {
     display: none;
@@ -405,6 +419,13 @@ section {
   }
   .product-grid {
     grid-template-columns: 200px;
+  }
+  .pricng-container {
+    flex-direction: column;
+  }
+  .pricing-card {
+    width: 200px;
+    height: 100px;
   }
 }
 

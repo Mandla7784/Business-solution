@@ -65,3 +65,13 @@ function main() {
   renderPricingCards(url);
 }
 main();
+
+let menuIcon = document.getElementById("menuIcon");
+menuIcon.addEventListener("click", () => {
+  if (menuIcon.classList.contains("fa-bars")) {
+    menuIcon.classList.remove("fa-bars");
+    menuIcon.classList.add("fa-x");
+  } else if (menuIcon.classList.contains("fa-x")) {
+    menuIcon.classList.add("fa-bars");
+  }
+});
