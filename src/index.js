@@ -72,6 +72,7 @@ menuIcon.addEventListener("click", () => {
     menuIcon.classList.remove("fa-bars");
     menuIcon.classList.add("fa-x");
   } else if (menuIcon.classList.contains("fa-x")) {
+    menuIcon.classList.remove("fa-x");
     menuIcon.classList.add("fa-bars");
   }
 });
