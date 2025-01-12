@@ -5,7 +5,7 @@
  * This function fetches card data from json file
  */
 const url = "/data/Pricing.json";
-const navabar = document.querySelector("nav-container");
+const menu = document.querySelector(".menuItems");
 const pricngContainer = document.querySelector(".pricng-container");
 const renderPricingCards = async (data) => {
   try {
@@ -62,31 +62,25 @@ function createPricingCard({ heading, price, description, btnText }) {
   return card;
 }
 
+let menuIcon = document.getElementById("menuIcon");
+menuIcon.onclick = () => {
+  const isMenuOpned = menuIcon.classList.contains("fa-x");
+
+  if (isMenuOpned) {
+    // closing the menu
+    menuIcon.classList.remove("fa-x");
+    menuIcon.classList.add("fa-bars");
+    menu.classList.add("Closed");
+  } else {
+    // opening the menu
+    menuIcon.classList.remove("fa-bars");
+
+    menuIcon.classList.add("fa-x");
+    menu.classList.remove("Closed");
+    menu.classList.add("Opened");
+  }
+};
 function main() {
   renderPricingCards(url);
 }
 main();
-let isOpened = true;
-
-let menuIcon = document.getElementById("menuIcon");
-menuIcon.addEventListener("click", () => {
-  if (menuIcon.classList.contains("fa-bars")) {
-    isOpened = false;
-
-    menuIcon.classList.remove("fa-bars");
-    navabar.classList.add("Closed");
-  } else if (menuIcon.classList.contains("fa-x")) {
-    isOpened = true;
-    menuIcon.classList.remove("fa-x");
-    menuIcon.classList.add("fa-bars");
-    navabar.classList.add("Opened");
-  }
-});
-
-// function checkSateOfNavbar(falg) {
-//   if ((falg = false)) {
-//     navabar.classList.add("Closed");
-//   } else {
-//     navabar.classList.add("Opened");
-//   }
-// }
