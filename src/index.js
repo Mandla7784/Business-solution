@@ -54,7 +54,7 @@ function createPricingCard({ heading, price, description, btnText }) {
   card.appendChild(descriptionElement);
 
   // Button
-  const button = document.createElement("button");
+  const button = document.createElement("a");
   button.className = "pricing-card-button";
   button.textContent = btnText;
   card.appendChild(button);
