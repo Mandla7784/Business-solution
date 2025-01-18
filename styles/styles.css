@@ -96,6 +96,34 @@ nav ul a {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: hsl(149, 81%, 63%) !important;
 }
+
+/* Btn doinate */
+
+.btn-donate {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #a42aeb;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-donate:hover {
+  background-color: #e61294;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-donate:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(88, 20, 71, 0.5);
+}
+
 .free:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);

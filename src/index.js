@@ -56,6 +56,7 @@ function createPricingCard({ heading, price, description, btnText }) {
   // Button
   const button = document.createElement("a");
   button.className = "pricing-card-button";
+  button.href = "/GetIntouch.html";
   button.textContent = btnText;
   card.appendChild(button);
 
