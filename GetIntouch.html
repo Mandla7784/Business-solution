@@ -3,9 +3,194 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/smallScreens.css" />
+    <link rel="stylesheet" href="/styles/pricngCards.css" />
+    <link rel="stylesheet" href="styles/ virtualcard.css" />
+    <link rel="stylesheet" href="/styles/solutionsCards.css" />
+    <link rel="stylesheet" href="/styles/NavbarToggling.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Document</title>
   </head>
   <body>
-    <input type="text" />
+    <nav>
+      <div class="nav-container">
+        <h2 style="color: rgb(24, 243, 159); font-weight: bold" class="logo">
+          Penta-<span style="color: hsl(328, 100%, 50%)">Solution</span>
+        </h2>
+        <div class="menuItems">
+          <ul>
+            <a href="">Products</a>
+            <a href="">Pricing </a>
+            <a href="">Solutions</a>
+            <a href="">Enter-prise</a>
+          </ul>
+          <div class="account">
+            <a class="login" href="">Log in</a>
+            <a class="free" href="">Try free</a>
+          </div>
+        </div>
+      </div>
+      <i id="menuIcon" class="fa-solid fa-bars"></i>
+    </nav>
+
+    <main>
+      <div class="container">
+        <form action="">
+          <h2 style="font-weight: bold">Log in to continue to the app</h2>
+          <input type="text" placeholder="Email Address or username" />
+        </form>
+      </div>
+    </main>
+
+    <script src="src/index.js"></script>
+    <footer class="footer">
+      <div class="footer-section">
+        <h3>Product</h3>
+        <ul>
+          <li>
+            <a href="#"><i class="fas fa-tag"></i> Pricing</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-users"></i> Customers</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-cogs"></i> Platforms</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-plug"></i> Integrations</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-history"></i> Changelog</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-road"></i> Roadmap</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Languages/Frameworks</h3>
+        <ul>
+          <li>
+            <a href="#"><i class="fab fa-js-square"></i> JavaScript</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-golang"></i> Go</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-app-store-ios"></i> iOS</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-java"></i> Java</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-react"></i> Next.js</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-dot-net"></i> .NET</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-react"></i> React</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-node"></i> Node.js</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-react"></i> React Native</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-php"></i> PHP</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-rails"></i> Rails</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-python"></i> Python</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-ruby"></i> Ruby</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-python"></i> Django</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Documentation</h3>
+        <ul>
+          <li>
+            <a href="#"><i class="fas fa-book"></i> Docs Overview</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-cogs"></i> Setting up Rollbar</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-bell"></i> Notifications</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-upload"></i> Deploy Tracking</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-project-diagram"></i> Telemetry</a>
+          </li>
+          <li>
+            <a href="#"
+              ><i class="fas fa-shield-alt"></i> Security & Compliance</a
+            >
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-plug"></i> API</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Company</h3>
+        <ul>
+          <li>
+            <a href="#"><i class="fas fa-info-circle"></i> About Us</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-briefcase"></i> Careers</a>
+          </li>
+          <li>
+            <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+          </li>
+        </ul>
+      </div>
+      <div class="footer-section social">
+        <h3>Follow Us</h3>
+        <ul>
+          <li>
+            <a href="#"><i class="fab fa-github"></i> GitHub</a>
+          </li>
+          <li>
+            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <div
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: hsl(221, 24%, 20%);
+        color: white;
+        padding: 0.5em 0;
+      "
+    >
+      <h4>Developer <span>Mandla Dyonase</span></h4>
+      <p class="rights-reserved">
+        &copy; 2025 Mandla Dyonase. All rights reserved.
+      </p>
+    </div>
   </body>
 </html>
