@@ -1,4 +1,3 @@
-console.log("Connected");
 const firebaseConfig = {
   apiKey: "AIzaSyDZb3TH-U1JNJKMr2wNYHuhg94WVQMSa_A",
   authDomain: "shoppinglist-8afb5.firebaseapp.com",
@@ -7,3 +6,6 @@ const firebaseConfig = {
   messagingSenderId: "1053775639867",
   appId: "1:1053775639867:web:868f64621e0540f7fa731e",
 };
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
