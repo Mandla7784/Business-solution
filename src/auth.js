@@ -11,7 +11,18 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const message = "Login Successful!";
 
-// Login fucntionality
+// Login with googl fucntionality
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const loginWithGoogleButton = document.querySelector(".google");
+loginWithGoogleButton.addEventListener("click", () => {
+  auth
+    .signInWithPopup(provider)
+    .then((results) => {
+      const user = results.user;
+      alert(`Welcome ${user.displayName}`);
+    })
+    .catch((error) => {
+      alert(error.message);
+    });
+});
