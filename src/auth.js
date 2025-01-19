@@ -9,3 +9,9 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+const message = "Login Successful!";
+
+// Login fucntionality
+
+const provider = new firebase.auth.GoogleAuthProvider();
+const loginWithGoogleButton = document.querySelector(".google");
