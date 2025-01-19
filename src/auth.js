@@ -12,7 +12,10 @@ const auth = firebase.auth();
 const message = "Login Successful!";
 
 // Login with googl fucntionality
-
+const form = document.querySelector("form");
+form.addEventListener("submit", function (event) {
+  event.preventDefault();
+});
 const provider = new firebase.auth.GoogleAuthProvider();
 const loginWithGoogleButton = document.querySelector(".google");
 const loginWithEmailAndPasswordButton = document.getElementById("loginButton");
@@ -28,7 +31,19 @@ loginWithGoogleButton.addEventListener("click", () => {
     });
 });
 
+const email = "Mndla@gamil.com";
+const password = "5456";
+
 // Log in with email and password
 loginWithEmailAndPasswordButton.addEventListener("click", function () {
-  console.log("clicked");
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .then((credentials) => {
+      const user = credentials.user;
+      console.log(user);
+      alert(message);
+    })
+    .catch((erro) => {
+      alert(`Errror ${erro.message}`);
+    });
 });
