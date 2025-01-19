@@ -15,6 +15,7 @@ const message = "Login Successful!";
 
 const provider = new firebase.auth.GoogleAuthProvider();
 const loginWithGoogleButton = document.querySelector(".google");
+const loginWithEmailAndPasswordButton = document.getElementById("loginButton");
 loginWithGoogleButton.addEventListener("click", () => {
   auth
     .signInWithPopup(provider)
@@ -25,4 +26,9 @@ loginWithGoogleButton.addEventListener("click", () => {
     .catch((error) => {
       alert(error.message);
     });
+});
+
+// Log in with email and password
+loginWithEmailAndPasswordButton.addEventListener("click", function () {
+  console.log("clicked");
 });
