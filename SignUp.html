@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/styles.css" />
+    <link rel="stylesheet" href="/styles/smallScreens.css" />
+    <link rel="stylesheet" href="/styles/pricngCards.css" />
+    <link rel="stylesheet" href="styles/ virtualcard.css" />
+    <link rel="stylesheet" href="/styles/solutionsCards.css" />
+    <link rel="stylesheet" href="/styles/NavbarToggling.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="/styles/SignIn.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <nav>
+      <div class="nav-container">
+        <h2 style="color: rgb(24, 163, 243); font-weight: bold" class="logo">
+          Penta-<span style="color: hsl(328, 100%, 50%)">Solution</span>
+        </h2>
+
+        <div class="menuItems">
+          <ul>
+            <a href="/index.html">Products</a>
+            <a href="">Pricing </a>
+            <a href="">Solutions</a>
+            <a href="">Enter-prise</a>
+          </ul>
+          <div class="account">
+            <a class="login" href="/index.html">Log in</a>
+            <a class="free" href="">Try free</a>
+            <a class="btn-donate" href="/payment.html">Donate</a>
+          </div>
+        </div>
+      </div>
+      <i id="menuIcon" class="fa-solid fa-bars"></i>
+    </nav>
+
+    <main>
+      <div class="container">
+        <form action="POST">
+          <h2 style="font-weight: bold">Sign up</h2>
+          <div class="texts">
+            <input
+              id="email"
+              type="text"
+              placeholder="Email Address or username"
+            />
+            <input id="password" type="password" placeholder="Password" />
+          </div>
+          <button id="loginButton">Sign up</button>
+          <hr />
+        </form>
+      </div>
+    </main>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="src/index.js"></script>
+    <script src="src/auth.js"></script>
+
+    <div
+      style="
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        background-color: hsl(221, 24%, 20%);
+        color: white;
+        padding: 0.5em 0;
+      "
+    >
+      <h4>Developer <span>Mandla Dyonase</span></h4>
+      <p class="rights-reserved">
+        &copy; 2025 Mandla Dyonase. All rights reserved.
+      </p>
+    </div>
+  </body>
+</html>
