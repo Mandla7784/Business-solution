@@ -31,11 +31,13 @@ loginWithGoogleButton.addEventListener("click", () => {
     });
 });
 
-const email = "Mndla@gamil.com";
-const password = "5456";
+const email = document.getElementById("email");
+const password = document.getElementById("password");
 
 // Log in with email and password
 loginWithEmailAndPasswordButton.addEventListener("click", function () {
+  console.log(email.value);
+  console.log(password.value);
   auth
     .signInWithEmailAndPassword(email, password)
     .then((credentials) => {
@@ -44,6 +46,6 @@ loginWithEmailAndPasswordButton.addEventListener("click", function () {
       alert(message);
     })
     .catch((erro) => {
-      alert(`Errror ${erro.message}`);
+      alert(email.value, password.value);
     });
 });
