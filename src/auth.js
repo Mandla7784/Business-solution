@@ -58,16 +58,18 @@ function signIn() {
 
 // Sign up with Facebook
 const FacebookAuth = new firebase.auth.FacebookAuthProvider();
-
+const signInwithFaceBookButton = document.querySelector("#facebook");
 // aunheticate user via popup
-firebase.auth
-  .signInWithPopup(FacebookAuth)
-  .then((res) => {
-    console.log("User signed in", res.user);
-  })
-  .catch((error) => {
-    alert("Error signing i n", error);
-  });
+signInwithFaceBookButton.addEventListener("click", function () {
+  auth
+    .signInWithPopup(FacebookAuth)
+    .then((res) => {
+      console.log("User signed in", res.user);
+    })
+    .catch((error) => {
+      alert("Error signing i n", error);
+    });
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   signIn();
