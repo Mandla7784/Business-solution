@@ -12,40 +12,51 @@ const auth = firebase.auth();
 const message = "Login Successful!";
 
 // Login with googl fucntionality
-const form = document.querySelector("form");
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
-});
-const provider = new firebase.auth.GoogleAuthProvider();
-const loginWithGoogleButton = document.querySelector(".google");
-const loginWithEmailAndPasswordButton = document.getElementById("loginButton");
-loginWithGoogleButton.addEventListener("click", () => {
-  auth
-    .signInWithPopup(provider)
-    .then((results) => {
-      const user = results.user;
-      alert(`Welcome ${user.displayName}`);
-    })
-    .catch((error) => {
-      alert(error.message);
-    });
-});
 
-const email = document.getElementById("email");
-const password = document.getElementById("password");
+function signInWithGoogle() {
+  const form = document.querySelector("form");
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+  });
+  const provider = new firebase.auth.GoogleAuthProvider();
+  const loginWithGoogleButton = document.querySelector(".google");
+  const loginWithEmailAndPasswordButton =
+    document.getElementById("loginButton");
+  loginWithGoogleButton.addEventListener("click", () => {
+    auth
+      .signInWithPopup(provider)
+      .then((results) => {
+        const user = results.user;
+        alert(`Welcome ${user.displayName}`);
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  });
+}
 
 // Log in with email and password
-loginWithEmailAndPasswordButton.addEventListener("click", function () {
-  console.log(email.value);
-  console.log(password.value);
-  auth
-    .signInWithEmailAndPassword(email, password)
-    .then((credentials) => {
-      const user = credentials.user;
-      console.log(user);
-      alert(message);
-    })
-    .catch((erro) => {
-      alert(email.value, password.value);
-    });
+function signIn() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  loginWithEmailAndPasswordButton.addEventListener("click", function () {
+    console.log(email);
+    console.log(password);
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then((credentials) => {
+        const user = credentials.user;
+        console.log("Signed as :", user.email);
+        alert(message);
+      })
+      .catch((erro) => {
+        alert(email.value, password.value);
+      });
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  signIn();
+  signInWithGoogle();
 });
