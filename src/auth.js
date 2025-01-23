@@ -13,8 +13,6 @@ const message = "Login Successful!";
 
 // Login with googl fucntionality
 
-const loginWithEmailAndPasswordButton = document.getElementById("loginButton");
-
 function signInWithGoogle() {
   const form = document.querySelector("form");
   form.addEventListener("submit", function (event) {
@@ -37,6 +35,7 @@ function signInWithGoogle() {
 }
 
 // Log in with email and password
+const loginWithEmailAndPasswordButton = document.getElementById("loginButton");
 function signIn() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
@@ -56,6 +55,9 @@ function signIn() {
       });
   });
 }
+
+// Siggn up with Facebook
+const FacebookAuth = new firebase.auth.FacebookAuthProvider();
 
 document.addEventListener("DOMContentLoaded", () => {
   signIn();
