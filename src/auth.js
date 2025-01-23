@@ -13,6 +13,8 @@ const message = "Login Successful!";
 
 // Login with googl fucntionality
 
+const loginWithEmailAndPasswordButton = document.getElementById("loginButton");
+
 function signInWithGoogle() {
   const form = document.querySelector("form");
   form.addEventListener("submit", function (event) {
@@ -20,8 +22,7 @@ function signInWithGoogle() {
   });
   const provider = new firebase.auth.GoogleAuthProvider();
   const loginWithGoogleButton = document.querySelector(".google");
-  const loginWithEmailAndPasswordButton =
-    document.getElementById("loginButton");
+
   loginWithGoogleButton.addEventListener("click", () => {
     auth
       .signInWithPopup(provider)
