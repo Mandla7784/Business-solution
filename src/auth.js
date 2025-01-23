@@ -56,8 +56,18 @@ function signIn() {
   });
 }
 
-// Siggn up with Facebook
+// Sign up with Facebook
 const FacebookAuth = new firebase.auth.FacebookAuthProvider();
+
+// aunheticate user via popup
+firebase.auth
+  .signInWithPopup(FacebookAuth)
+  .then((res) => {
+    console.log("User signed in", res.user);
+  })
+  .catch((error) => {
+    alert("Error signing i n", error);
+  });
 
 document.addEventListener("DOMContentLoaded", () => {
   signIn();
