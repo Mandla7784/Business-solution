@@ -47,6 +47,7 @@ function signInWithGoogle() {
 
 // Log in with email and password
 const loginWithEmailAndPasswordButton = document.getElementById("loginButton");
+
 function signIn() {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
