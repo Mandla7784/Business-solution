@@ -30,6 +30,11 @@ function signInWithGoogle() {
         let badge = document.createElement("div");
         badge.textContent = message;
         badge.classList.add("alert");
+        document.body.prepend(badge);
+
+        setTimeout(function () {
+          document.body.removeChild(badge);
+        }, 3000);
       })
       .catch((error) => {
         alert(error.message);
