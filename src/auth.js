@@ -27,11 +27,17 @@ function signInWithGoogle() {
       .then((results) => {
         const user = results.user;
         alert(`Welcome ${user.displayName}`);
+        let badge = document.createElement("div");
+        badge.textContent = message;
+        badge.classList.add("alert");
       })
       .catch((error) => {
         alert(error.message);
       });
   });
+  setTimeout(function () {
+    loginWithGoogleButton.href = "/index.html";
+  }, 2000);
 }
 
 // Log in with email and password
