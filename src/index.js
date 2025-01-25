@@ -81,6 +81,7 @@ menuIcon.onclick = () => {
     menu.classList.add("Opened");
   }
 };
+
 function main() {
   renderPricingCards(url);
 }
