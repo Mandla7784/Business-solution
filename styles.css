@@ -411,7 +411,7 @@ section {
   align-items: center;
 }
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 900px) {
   .menuItems {
     display: none;
     align-items: start !important;
