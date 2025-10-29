@@ -12,7 +12,14 @@ const config = window.APP_CONFIG || {};
  */
 async function fetchPricingData(url) {
   try {
-    const response = await fetch(url);
+    // Use secure fetch for CORS protection
+    const secureFetch = (await import("./utils/security.js")).secureFetch;
+    const response = await secureFetch(url, {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
@@ -133,8 +140,7 @@ function initializeMobileMenu() {
  * Initializes all features when DOM is ready
  */
 function init() {
-  const pricingDataUrl =
-    config.api?.pricingDataUrl || "/data/Pricing.json";
+  const pricingDataUrl = config.api?.pricingDataUrl || "/data/Pricing.json";
 
   // Render pricing cards
   renderPricingCards(pricingDataUrl);

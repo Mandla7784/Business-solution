@@ -3,9 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Donate to support our development efforts" />
+    <meta
+      name="description"
+      content="Donate to support our development efforts"
+    />
     <title>Donate - Penta Solution</title>
-    
+
     <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="smallScreens.css" />
@@ -17,7 +20,7 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    
+
     <style>
       html {
         scroll-behavior: smooth;
@@ -66,33 +69,43 @@
 
     <!-- Config must load before scripts that use it -->
     <script src="config/config.js"></script>
+    <script src="src/security-init.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
     <script>
       // Initialize PayPal with config
-      const paypalClientId = window.APP_CONFIG?.paypal?.clientId || "AVJp2CuGgypueHwV-1_NemjbVdfkUc2Puq_UOEah7OdcqZOohz05nQGzrOgE-PwQoBUtdHsKNmWVhrZb";
-      const paypalEnvironment = window.APP_CONFIG?.paypal?.environment || "sandbox";
-      
+      const paypalClientId =
+        window.APP_CONFIG?.paypal?.clientId ||
+        "AVJp2CuGgypueHwV-1_NemjbVdfkUc2Puq_UOEah7OdcqZOohz05nQGzrOgE-PwQoBUtdHsKNmWVhrZb";
+      const paypalEnvironment =
+        window.APP_CONFIG?.paypal?.environment || "sandbox";
+
       const script = document.createElement("script");
-      script.src = `https://${paypalEnvironment === "production" ? "www" : "sandbox"}.paypal.com/sdk/js?client-id=${paypalClientId}&components=buttons`;
-      script.onload = function() {
+      script.src = `https://${
+        paypalEnvironment === "production" ? "www" : "sandbox"
+      }.paypal.com/sdk/js?client-id=${paypalClientId}&components=buttons`;
+      script.onload = function () {
         if (typeof paypal !== "undefined") {
           paypal
             .Buttons({
-              createOrder: function(data, actions) {
+              createOrder: function (data, actions) {
                 return actions.order.create({
-                  purchase_units: [{
-                    amount: {
-                      value: "10.00"
-                    }
-                  }]
+                  purchase_units: [
+                    {
+                      amount: {
+                        value: "10.00",
+                      },
+                    },
+                  ],
                 });
               },
-              onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                  alert("Transaction completed by " + details.payer.name.given_name);
+              onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                  alert(
+                    "Transaction completed by " + details.payer.name.given_name
+                  );
                 });
-              }
+              },
             })
             .render("#paypal-button-container");
         }

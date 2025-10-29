@@ -1,0 +1,37 @@
+# Security Headers and CORS Configuration
+# For Apache servers
+
+# Enable CORS
+<IfModule mod_headers.c>
+    # Allow specific origins (update with your domain)
+    SetEnvIf Origin "^https?://(www\.)?(yourdomain\.com|localhost)(:\d+)?$" CORS_ORIGIN=$0
+    Header set Access-Control-Allow-Origin "%{CORS_ORIGIN}e" env=CORS_ORIGIN
+    Header set Access-Control-Allow-Credentials "true" env=CORS_ORIGIN
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS" env=CORS_ORIGIN
+    Header set Access-Control-Allow-Headers "X-Requested-With, Content-Type, X-CSRF-Token, Authorization" env=CORS_ORIGIN
+    Header set Access-Control-Max-Age "3600" env=CORS_ORIGIN
+
+    # Security Headers
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "SAMEORIGIN"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    
+    # Content Security Policy
+    Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com https://*.paypal.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' data: https:; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self' https://*.googleapis.com https://*.firebase.com https://*.firebaseio.com https://*.paypal.com; frame-src https://*.paypal.com;"
+</IfModule>
+
+# Handle OPTIONS requests for CORS preflight
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{REQUEST_METHOD} OPTIONS
+    RewriteRule ^(.*)$ $1 [R=200,L]
+</IfModule>
+
+# Protect sensitive files
+<FilesMatch "\.(env|config\.js|\.git)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
