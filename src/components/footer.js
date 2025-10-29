@@ -1,19 +1,11 @@
-/**
- * Footer Component
- * Reusable footer HTML
- */
-
-/**
- * Creates and returns a footer HTML string
- * @returns {string} - HTML string for footer
- */
+// footer component
 export function createFooter() {
   return `
     <footer class="footer">
       <div class="footer-section">
         <h3>Product</h3>
         <ul>
-          <li><a href="/index.html#Pricing"><i class="fas fa-tag"></i> Pricing</a></li>
+          <li><a href="/html/index.html#Pricing"><i class="fas fa-tag"></i> Pricing</a></li>
           <li><a href="#"><i class="fas fa-users"></i> Customers</a></li>
           <li><a href="#"><i class="fas fa-cogs"></i> Platforms</a></li>
           <li><a href="#"><i class="fas fa-plug"></i> Integrations</a></li>
@@ -48,7 +40,7 @@ export function createFooter() {
           <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
           <li><a href="#"><i class="fas fa-upload"></i> Deploy Tracking</a></li>
           <li><a href="#"><i class="fas fa-project-diagram"></i> Telemetry</a></li>
-          <li><a href="#"><i class="fas fa-shield-alt"></i> Security & Compliance</a></li>
+          <li><a hrefファ><i class="fas fa-shield-alt"></i> Security & Compliance</a></li>
           <li><a href="#"><i class="fas fa-plug"></i> API</a></li>
         </ul>
       </div>
@@ -57,7 +49,7 @@ export function createFooter() {
         <ul>
           <li><a href="#"><i class="fas fa-info-circle"></i> About Us</a></li>
           <li><a href="#"><i class="fas fa-briefcase"></i> Careers</a></li>
-          <li><a href="/Contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
+          <li><a href="/html/Contact-us.html"><i class="fas fa-envelope"></i> Contact Us</a></li>
         </ul>
       </div>
       <div class="footer-section social">
@@ -76,4 +68,3 @@ export function createFooter() {
     </div>
   `;
 }
-

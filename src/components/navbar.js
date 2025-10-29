@@ -1,14 +1,4 @@
-/**
- * Navigation Bar Component
- * Reusable navbar functionality
- */
-
-/**
- * Creates and returns a navigation bar HTML string
- * @param {object} options - Navigation options
- * @param {string} options.currentPage - Current page identifier
- * @returns {string} - HTML string for navbar
- */
+// navbar component
 export function createNavbar(options = {}) {
   const { currentPage = "home" } = options;
 
@@ -20,16 +10,16 @@ export function createNavbar(options = {}) {
         </h2>
         <div class="menuItems">
           <ul>
-            <a href="/index.html#home" ${currentPage === "home" ? 'class="active"' : ""}>Home</a>
-            <a href="/index.html#products" ${currentPage === "products" ? 'class="active"' : ""}>Products</a>
-            <a href="/index.html#Pricing" ${currentPage === "pricing" ? 'class="active"' : ""}>Pricing</a>
-            <a href="/index.html#solutions" ${currentPage === "solutions" ? 'class="active"' : ""}>Solutions</a>
-            <a href="/index.html#enterprise" ${currentPage === "enterprise" ? 'class="active"' : ""}>Enterprise</a>
+            <a href="/html/index.html#home" ${currentPage === "home" ? 'class="active"' : ""}>Home</a>
+            <a href="/html/index.html#products" ${currentPage === "products" ? 'class="active"' : ""}>Products</a>
+            <a href="/html/index.html#Pricing" ${currentPage === "pricing" ? 'class="active"' : ""}>Pricing</a>
+            <a href="/html/index.html#solutions" ${currentPage === "solutions" ? 'class="active"' : ""}>Solutions</a>
+            <a href="/html/index.html#enterprise" ${currentPage === "enterprise" ? 'class="active"' : ""}>Enterprise</a>
           </ul>
           <div class="account">
-            <a class="login" href="/GetIntouch.html">Log in</a>
-            <a class="free" href="./News-letter-form.html">Try free</a>
-            <a class="btn-donate" href="/payment.html">Donate</a>
+            <a class="login" href="/html/GetIntouch.html">Log in</a>
+            <a class="free" href="/html/News-letter-form.html">Try free</a>
+            <a class="btn-donate" href="/html/payment.html">Donate</a>
           </div>
         </div>
       </div>
@@ -37,4 +27,3 @@ export function createNavbar(options = {}) {
     </nav>
   `;
 }
-

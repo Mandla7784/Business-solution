@@ -1,17 +1,5 @@
-/**
- * UI utility functions
- * Handles DOM manipulation and user feedback
- */
-
-/**
- * Creates and displays an alert message to the user
- * @param {string} message - Message to display
- * @param {string} type - Type of alert ('success' | 'error' | 'info')
- * @param {number} duration - Duration in milliseconds before auto-removing
- * @returns {HTMLElement} - The created alert element
- */
+// show alert
 export function showAlert(message, type = "info", duration = 3000) {
-  // Remove existing alerts
   const existingAlert = document.querySelector(".alert-badge");
   if (existingAlert) {
     existingAlert.remove();
@@ -33,7 +21,6 @@ export function showAlert(message, type = "info", duration = 3000) {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   `;
 
-  // Set background color based on type
   const colors = {
     success: "#10b981",
     error: "#ef4444",
@@ -43,7 +30,6 @@ export function showAlert(message, type = "info", duration = 3000) {
 
   document.body.prepend(alertBadge);
 
-  // Auto-remove after duration
   if (duration > 0) {
     setTimeout(() => {
       if (alertBadge.parentNode) {
@@ -58,10 +44,7 @@ export function showAlert(message, type = "info", duration = 3000) {
   return alertBadge;
 }
 
-/**
- * Shows a loading spinner
- * @param {HTMLElement} element - Element to show loader on
- */
+// show loading spinner
 export function showLoader(element) {
   if (!element) return;
 
@@ -75,14 +58,11 @@ export function showLoader(element) {
   element.appendChild(loader);
 }
 
-/**
- * Hides a loading spinner
- * @param {HTMLElement} element - Element to hide loader from
- */
+// hide loading spinner
 export function hideLoader(element) {
   if (!element) return;
 
-  element.disabled = false;
+  element.disabled =фици false;
   element.style.opacity = "1";
   element.style.cursor = "pointer";
 
@@ -92,11 +72,7 @@ export function hideLoader(element) {
   }
 }
 
-/**
- * Redirects to a new page after a delay
- * @param {string} url - URL to redirect to
- * @param {number} delay - Delay in milliseconds
- */
+// redirect with delay
 export function redirectWithDelay(url, delay = 0) {
   if (delay > 0) {
     setTimeout(() => {
@@ -107,11 +83,7 @@ export function redirectWithDelay(url, delay = 0) {
   }
 }
 
-/**
- * Safely gets an element by ID
- * @param {string} id - Element ID
- * @returns {HTMLElement|null} - The element or null if not found
- */
+// get element by id
 export function getElement(id) {
   const element = document.getElementById(id);
   if (!element) {
@@ -120,11 +92,7 @@ export function getElement(id) {
   return element;
 }
 
-/**
- * Safely gets an element by selector
- * @param {string} selector - CSS selector
- * @returns {HTMLElement|null} - The element or null if not found
- */
+// get element by selector
 export function querySelector(selector) {
   const element = document.querySelector(selector);
   if (!element) {
@@ -132,4 +100,3 @@ export function querySelector(selector) {
   }
   return element;
 }
-

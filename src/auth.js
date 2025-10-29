@@ -1,10 +1,4 @@
-/**
- * Authentication Module
- * Handles user authentication with Firebase
- * Supports: Email/Password, Google, and Facebook authentication
- */
-
-// Initialize Firebase with configuration from config file
+// firebase config
 const firebaseConfig = window.APP_CONFIG?.firebase || {
   apiKey: "AIzaSyDZb3TH-U1JNJKMr2wNYHuhg94WVQMSa_A",
   authDomain: "shoppinglist-8afb5.firebaseapp.com",
@@ -14,7 +8,6 @@ const firebaseConfig = window.APP_CONFIG?.firebase || {
   appId: "1:1053775639867:web:868f64621e0540f7fa731e",
 };
 
-// Initialize Firebase if not already initialized
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig);
 }
@@ -22,11 +15,7 @@ if (!firebase.apps.length) {
 const auth = firebase.auth();
 const config = window.APP_CONFIG || {};
 
-/**
- * Shows user-friendly alert message
- * @param {string} message - Message to display
- * @param {string} type - Alert type ('success' | 'error' | 'info')
- */
+// show alert message
 function showAlert(message, type = "info") {
   const existingAlert = document.querySelector(".alert-badge");
   if (existingAlert) {
@@ -61,11 +50,7 @@ function showAlert(message, type = "info") {
   }, duration);
 }
 
-/**
- * Gets user-friendly error message from Firebase error
- * @param {object} error - Firebase error object
- * @returns {string} - User-friendly error message
- */
+// get firebase error message
 function getErrorMessage(error) {
   if (!error || !error.code) {
     return "An unexpected error occurred. Please try again.";
@@ -87,11 +72,7 @@ function getErrorMessage(error) {
   return errorMessages[error.code] || error.message || "An error occurred. Please try again.";
 }
 
-/**
- * Validates email format
- * @param {string} email - Email to validate
- * @returns {boolean} - True if email is valid
- */
+// validate email
 function isValidEmail(email) {
   if (!email || typeof email !== "string") {
     return false;
@@ -100,10 +81,7 @@ function isValidEmail(email) {
   return emailRegex.test(email.trim());
 }
 
-/**
- * Handles Google Sign-In
- * Sets up event listener for Google authentication button
- */
+// google sign in
 function signInWithGoogle() {
   const form = document.querySelector("form");
   const loginWithGoogleButton = document.querySelector(".google");
@@ -113,7 +91,6 @@ function signInWithGoogle() {
     return;
   }
 
-  // Prevent form submission
   form.addEventListener("submit", function (event) {
     event.preventDefault();
   });
@@ -130,10 +107,9 @@ function signInWithGoogle() {
         const welcomeMessage = `Welcome ${user.displayName || user.email}!`;
         showAlert(welcomeMessage, "success");
 
-        // Redirect after successful login
         const redirectDelay = config.constants?.redirectDelay || 2000;
         setTimeout(() => {
-          window.location.href = "/index.html";
+          window.location.href = "/html/index.html";
         }, redirectDelay);
       })
       .catch((error) => {
@@ -143,10 +119,7 @@ function signInWithGoogle() {
   });
 }
 
-/**
- * Handles Email/Password Sign-In
- * Sets up event listener for email/password authentication
- */
+// email/password sign in
 function signInWithEmail() {
   const loginButton = document.getElementById("loginButton");
   const emailInput = document.getElementById("email");
@@ -163,7 +136,6 @@ function signInWithEmail() {
     const email = emailInput.value.trim();
     const password = passwordInput.value;
 
-    // Validate inputs
     if (!email || !isValidEmail(email)) {
       showAlert("Please enter a valid email address", "error");
       return;
@@ -174,7 +146,6 @@ function signInWithEmail() {
       return;
     }
 
-    // Attempt sign-in
     auth
       .signInWithEmailAndPassword(email, password)
       .then((credentials) => {
@@ -182,9 +153,8 @@ function signInWithEmail() {
         const successMessage = config.messages?.loginSuccess || "Login Successful!";
         showAlert(successMessage, "success");
 
-        // Redirect after successful login
         setTimeout(() => {
-          window.location.href = "/index.html";
+          window.location.href = "/html/index.html";
         }, config.constants?.redirectDelay || 2000);
       })
       .catch((error) => {
@@ -194,10 +164,7 @@ function signInWithEmail() {
   });
 }
 
-/**
- * Handles Facebook Sign-In
- * Sets up event listener for Facebook authentication
- */
+// facebook sign in
 function signInWithFacebook() {
   const facebookButton = document.querySelector("#facebook");
 
@@ -218,10 +185,9 @@ function signInWithFacebook() {
         const welcomeMessage = `Welcome ${user.displayName || user.email}!`;
         showAlert(welcomeMessage, "success");
 
-        // Redirect after successful login
         const redirectDelay = config.constants?.redirectDelay || 2000;
         setTimeout(() => {
-          window.location.href = "/index.html";
+          window.location.href = "/html/index.html";
         }, redirectDelay);
       })
       .catch((error) => {
@@ -231,9 +197,7 @@ function signInWithFacebook() {
   });
 }
 
-/**
- * Initializes authentication handlers when DOM is ready
- */
+// init auth handlers
 function initializeAuth() {
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
@@ -248,7 +212,4 @@ function initializeAuth() {
   }
 }
 
-// Initialize authentication when script loads
 initializeAuth();
-
-

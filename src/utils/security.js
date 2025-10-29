@@ -1,12 +1,4 @@
-/**
- * Security Utilities
- * Handles CSRF protection and CORS configuration
- */
-
-/**
- * Generates a secure random token for CSRF protection
- * @returns {string} - Random token
- */
+// generate csrf token
 function generateCSRFToken() {
   const array = new Uint32Array(10);
   window.crypto.getRandomValues(array);
@@ -15,38 +7,26 @@ function generateCSRFToken() {
   );
 }
 
-/**
- * Gets or creates a CSRF token for the current session
- * @returns {string} - CSRF token
- */
+// get or create csrf token
 export function getCSRFToken() {
   let token = sessionStorage.getItem("csrfToken");
 
   if (!token) {
     token = generateCSRFToken();
     sessionStorage.setItem("csrfToken", token);
-    // Store in a cookie as well for server-side validation
     document.cookie = `csrfToken=${token}; SameSite=Strict; Secure; Path=/; Max-Age=3600`;
   }
 
   return token;
 }
 
-/**
- * Validates CSRF token
- * @param {string} token - Token to validate
- * @returns {boolean} - True if token is valid
- */
+// validate csrf token
 export function validateCSRFToken(token) {
   const storedToken = sessionStorage.getItem("csrfToken");
   return storedToken !== null && storedToken === token;
 }
 
-/**
- * Adds CSRF token to fetch request headers
- * @param {object} options - Fetch options object
- * @returns {object} - Updated fetch options with CSRF token
- */
+// add csrf to fetch headers
 export function addCSRFToken(options = {}) {
   const token = getCSRFToken();
 
@@ -57,21 +37,13 @@ export function addCSRFToken(options = {}) {
   return options;
 }
 
-/**
- * Secure fetch wrapper with CSRF protection and CORS handling
- * @param {string} url - URL to fetch
- * @param {object} options - Fetch options
- * @returns {Promise<Response>} - Fetch response
- */
+// secure fetch wrapper
 export async function secureFetch(url, options = {}) {
-  // Add CSRF token to requests
   const secureOptions = addCSRFToken(options);
 
-  // Set CORS mode
   secureOptions.mode = secureOptions.mode || "cors";
   secureOptions.credentials = secureOptions.credentials || "same-origin";
 
-  // Add security headers
   secureOptions.headers = {
     ...secureOptions.headers,
     "Content-Type": secureOptions.headers["Content-Type"] || "application/json",
@@ -81,7 +53,6 @@ export async function secureFetch(url, options = {}) {
   try {
     const response = await fetch(url, secureOptions);
 
-    // Check if response includes CSRF validation header
     const csrfValid = response.headers.get("X-CSRF-Valid");
     if (csrfValid === "false") {
       throw new Error("CSRF token validation failed");
@@ -94,14 +65,10 @@ export async function secureFetch(url, options = {}) {
   }
 }
 
-/**
- * Adds CSRF token input to a form
- * @param {HTMLFormElement} form - Form element
- */
+// add csrf token to form
 export function addCSRFTokenToForm(form) {
   if (!form) return;
 
-  // Check if token input already exists
   let tokenInput = form.querySelector('input[name="csrfToken"]');
 
   if (!tokenInput) {
@@ -111,25 +78,17 @@ export function addCSRFTokenToForm(form) {
     tokenInput.value = getCSRFToken();
     form.appendChild(tokenInput);
   } else {
-    // Update existing token
     tokenInput.value = getCSRFToken();
   }
 }
 
-/**
- * Validates form submission with CSRF token
- * @param {FormData} formData - Form data to validate
- * @returns {boolean} - True if CSRF token is valid
- */
+// validate form submission
 export function validateFormSubmission(formData) {
   const submittedToken = formData.get("csrfToken");
   return validateCSRFToken(submittedToken);
 }
 
-/**
- * Gets allowed origins for CORS (should match your domain)
- * @returns {Array<string>} - Array of allowed origins
- */
+// get allowed origins for cors
 export function getAllowedOrigins() {
   const config = window.APP_CONFIG || {};
   const allowedOrigins = config.security?.allowedOrigins || [
@@ -141,11 +100,7 @@ export function getAllowedOrigins() {
   return allowedOrigins;
 }
 
-/**
- * Checks if origin is allowed for CORS
- * @param {string} origin - Origin to check
- * @returns {boolean} - True if origin is allowed
- */
+// check if origin is allowed
 export function isOriginAllowed(origin) {
   const allowedOrigins = getAllowedOrigins();
   return allowedOrigins.includes(origin) || origin === window.location.origin;

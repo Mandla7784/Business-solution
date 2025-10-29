@@ -1,13 +1,4 @@
-/**
- * Validation utility functions
- * Provides input validation and sanitization
- */
-
-/**
- * Validates email address format
- * @param {string} email - Email address to validate
- * @returns {boolean} - True if email is valid
- */
+// email validation
 export function isValidEmail(email) {
   if (!email || typeof email !== "string") {
     return false;
@@ -16,12 +7,7 @@ export function isValidEmail(email) {
   return emailRegex.test(email.trim());
 }
 
-/**
- * Validates password strength
- * @param {string} password - Password to validate
- * @param {number} minLength - Minimum password length (default: 6)
- * @returns {object} - { isValid: boolean, error: string|null }
- */
+// password validation
 export function validatePassword(password, minLength = 6) {
   if (!password || typeof password !== "string") {
     return { isValid: false, error: "Password is required" };
@@ -37,25 +23,16 @@ export function validatePassword(password, minLength = 6) {
   return { isValid: true, error: null };
 }
 
-/**
- * Validates phone number format (basic validation)
- * @param {string} phone - Phone number to validate
- * @returns {boolean} - True if phone number is valid
- */
+// phone validation
 export function isValidPhone(phone) {
   if (!phone || typeof phone !== "string") {
     return false;
   }
-  // Allow various phone number formats
   const phoneRegex = /^[\d\s\-\+\(\)]+$/;
   return phoneRegex.test(phone.trim()) && phone.trim().length >= 10;
 }
 
-/**
- * Sanitizes user input by trimming whitespace
- * @param {string} input - Input to sanitize
- * @returns {string} - Sanitized input
- */
+// clean up input
 export function sanitizeInput(input) {
   if (typeof input !== "string") {
     return "";
@@ -63,11 +40,7 @@ export function sanitizeInput(input) {
   return input.trim();
 }
 
-/**
- * Validates form inputs
- * @param {object} inputs - Object containing form inputs
- * @returns {object} - { isValid: boolean, errors: object }
- */
+// validate form inputs
 export function validateForm(inputs) {
   const errors = {};
   let isValid = true;
