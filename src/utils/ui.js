@@ -62,7 +62,7 @@ export function showLoader(element) {
 export function hideLoader(element) {
   if (!element) return;
 
-  element.disabled =фици false;
+  element.disabled = false;
   element.style.opacity = "1";
   element.style.cursor = "pointer";
 

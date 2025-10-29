@@ -40,7 +40,7 @@ export function createFooter() {
           <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
           <li><a href="#"><i class="fas fa-upload"></i> Deploy Tracking</a></li>
           <li><a href="#"><i class="fas fa-project-diagram"></i> Telemetry</a></li>
-          <li><a hrefファ><i class="fas fa-shield-alt"></i> Security & Compliance</a></li>
+          <li><a href="#"><i class="fas fa-shield-alt"></i> Security & Compliance</a></li>
           <li><a href="#"><i class="fas fa-plug"></i> API</a></li>
         </ul>
       </div>

@@ -8,13 +8,16 @@ export function getFirebaseErrorMessage(error) {
     "auth/user-not-found": "No account found with this email address.",
     "auth/wrong-password": "Incorrect password. Please try again.",
     "auth/email-already-in-use": "This email is already registered.",
-    "auth/weak-password": "Password is too weak. Please use a stronger password.",
+    "auth/weak-password":
+      "Password is too weak. Please use a stronger password.",
     "auth/invalid-email": "Please enter a valid email address.",
     "auth/operation-not-allowed": "This sign-in method is not enabled.",
-    "auth/network-request-failed": "Network error. Please check your connection.",
+    "auth/network-request-failed":
+      "Network error. Please check your connection.",
     "auth/popup-closed-by-user": "Sign-in window was closed. Please try again.",
     "auth/cancelled-popup-request": "Sign-in request was cancelled.",
-    "auth/popup-blocked": "Pop-up was blocked. Please allow pop-ups and try again.",
+    "auth/popup-blocked":
+      "Pop-up was blocked. Please allow pop-ups and try again.",
   };
 
   return (

@@ -1,20 +1,12 @@
-/**
- * Server-Side Security Configuration (Node.js/Express Example)
- * Use this as a reference for implementing server-side CORS and CSRF protection
- *
- * This file is provided as a reference. Copy the relevant parts to your server code.
- */
-
-// Example Express.js middleware configuration
+// server security config example for node/express
 
 const cors = require("cors");
 const helmet = require("helmet");
 const csrf = require("csurf");
 
-// CORS Configuration
+// cors settings
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
     if (!origin) return callback(null, true);
 
     const allowedOrigins = [
@@ -39,13 +31,12 @@ const corsOptions = {
     "X-Requested-With",
   ],
   exposedHeaders: ["X-CSRF-Token", "X-CSRF-Valid"],
-  maxAge: 3600, // 1 hour
+  maxAge: 3600,
 };
 
-// Apply CORS
 app.use(cors(corsOptions));
 
-// Security Headers
+// security headers
 app.use(
   helmet({
     contentSecurityPolicy: {
@@ -74,10 +65,9 @@ app.use(
   })
 );
 
-// CSRF Protection
+// csrf protection
 const csrfProtection = csrf({ cookie: true });
 
-// Apply CSRF to all routes except GET, HEAD, OPTIONS
 app.use((req, res, next) => {
   if (["GET", "HEAD", "OPTIONS"].includes(req.method)) {
     return next();
@@ -85,12 +75,12 @@ app.use((req, res, next) => {
   csrfProtection(req, res, next);
 });
 
-// CSRF Token Endpoint
+// csrf token endpoint
 app.get("/api/csrf-token", csrfProtection, (req, res) => {
   res.json({ csrfToken: req.csrfToken() });
 });
 
-// Validate CSRF Token Middleware
+// validate csrf token
 function validateCSRFToken(req, res, next) {
   const token = req.headers["x-csrf-token"] || req.body.csrfToken;
   const sessionToken = req.cookies.csrfToken;
@@ -103,9 +93,8 @@ function validateCSRFToken(req, res, next) {
   next();
 }
 
-// Example Protected Route
+// example protected route
 app.post("/api/contact", validateCSRFToken, (req, res) => {
-  // Handle form submission
   res.json({ success: true, message: "Form submitted successfully" });
 });
 
