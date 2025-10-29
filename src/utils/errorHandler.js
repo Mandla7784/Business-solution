@@ -56,7 +56,7 @@ export function handleError(error, context = "Application", showToUser = true) {
   // Show to user if requested
   if (showToUser && typeof window !== "undefined") {
     // Import dynamically to avoid circular dependencies
-    import("./ui保存在.js").then(({ showAlert }) => {
+    import("./ui.js").then(({ showAlert }) => {
       showAlert(errorMessage, "error");
     });
   }

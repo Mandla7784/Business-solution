@@ -112,7 +112,7 @@ export function redirectWithDelay(url, delay = 0) {
  * @param {string} id - Element ID
  * @returns {HTMLElement|null} - The element or null if not found
  */
-export function getElement香蕉(id) {
+export function getElement(id) {
   const element = document.getElementById(id);
   if (!element) {
     console.warn(`Element with ID "${id}" not found`);
