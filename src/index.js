@@ -1,37 +1,41 @@
 /**
- *
- * @param {*} data
- * @returns
- * This function fetches card data from json file
+ * Main Application Script
+ * Handles pricing cards rendering and navigation menu toggling
  */
-const url = "/data/Pricing.json";
-const menu = document.querySelector(".menuItems");
-const pricngContainer = document.querySelector(".pricng-container");
-const renderPricingCards = async (data) => {
-  try {
-    const response = await fetch(data);
 
-    if (response.ok) {
-      const data = await response.json();
-      const cardsData = data["pricing"];
+const config = window.APP_CONFIG || {};
 
-      cardsData.forEach((item) => {
-        const pricingCard = createPricingCard(item);
-        pricngContainer.appendChild(pricingCard);
-      });
-
-      return cardsData;
-    }
-  } catch (error) {
-    console.log(error, "Error fetching resources");
-  }
-};
 /**
- * Creates a pricing card using HTML structure.
- * @param {object} param - Pricing card data.
+ * Fetches pricing card data from JSON file
+ * @param {string} url - URL to fetch pricing data from
+ * @returns {Promise<Array>} - Array of pricing card data
+ */
+async function fetchPricingData(url) {
+  try {
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    return data.pricing || [];
+  } catch (error) {
+    console.error("Error fetching pricing data:", error);
+    throw error;
+  }
+}
+
+/**
+ * Creates a pricing card element
+ * @param {object} cardData - Pricing card data object
+ * @param {string} cardData.heading - Card heading
+ * @param {number|string} cardData.price - Card price (number or "text us")
+ * @param {string} cardData.description - Card description
+ * @param {string} cardData.btnText - Button text
+ * @returns {HTMLElement} - The created pricing card element
  */
 function createPricingCard({ heading, price, description, btnText }) {
-  // Create card container
   const card = document.createElement("div");
   card.className = "pricing-card";
 
@@ -44,7 +48,10 @@ function createPricingCard({ heading, price, description, btnText }) {
   // Price
   const priceElement = document.createElement("h1");
   priceElement.className = "pricing-card-price";
-  priceElement.textContent = price === "text us" ? price : `R${price}/mo`;
+  const currency = config.constants?.pricingCurrency || "R";
+  const period = config.constants?.pricingPeriod || "/mo";
+  priceElement.textContent =
+    price === "text us" ? price : `${currency}${price}${period}`;
   card.appendChild(priceElement);
 
   // Description
@@ -63,26 +70,82 @@ function createPricingCard({ heading, price, description, btnText }) {
   return card;
 }
 
-let menuIcon = document.getElementById("menuIcon");
-menuIcon.onclick = () => {
-  const isMenuOpned = menuIcon.classList.contains("fa-x");
+/**
+ * Renders pricing cards to the container
+ * @param {string} dataUrl - URL to fetch pricing data from
+ */
+async function renderPricingCards(dataUrl) {
+  const pricingContainer = document.querySelector(".pricng-container");
 
-  if (isMenuOpned) {
-    // closing the menu
-    menuIcon.classList.remove("fa-x");
-    menuIcon.classList.add("fa-bars");
-    menu.classList.add("Closed");
-  } else {
-    // opening the menu
-    menuIcon.classList.remove("fa-bars");
-
-    menuIcon.classList.add("fa-x");
-    menu.classList.remove("Closed");
-    menu.classList.add("Opened");
+  if (!pricingContainer) {
+    console.warn("Pricing container not found");
+    return;
   }
-};
 
-function main() {
-  renderPricingCards(url);
+  try {
+    const pricingData = await fetchPricingData(dataUrl);
+    pricingContainer.innerHTML = ""; // Clear existing content
+
+    pricingData.forEach((item) => {
+      const pricingCard = createPricingCard(item);
+      pricingContainer.appendChild(pricingCard);
+    });
+  } catch (error) {
+    console.error("Error rendering pricing cards:", error);
+    pricingContainer.innerHTML = `<p style="color: red;">Error loading pricing information. Please try again later.</p>`;
+  }
 }
-main();
+
+/**
+ * Toggles the mobile navigation menu
+ * Handles menu icon switching and menu visibility
+ */
+function initializeMobileMenu() {
+  const menuIcon = document.getElementById("menuIcon");
+  const menu = document.querySelector(".menuItems");
+
+  if (!menuIcon || !menu) {
+    console.warn("Menu icon or menu items not found");
+    return;
+  }
+
+  menuIcon.addEventListener("click", () => {
+    const isMenuOpened = menuIcon.classList.contains("fa-x");
+
+    if (isMenuOpened) {
+      // Close the menu
+      menuIcon.classList.remove("fa-x");
+      menuIcon.classList.add("fa-bars");
+      menu.classList.add("Closed");
+      menu.classList.remove("Opened");
+    } else {
+      // Open the menu
+      menuIcon.classList.remove("fa-bars");
+      menuIcon.classList.add("fa-x");
+      menu.classList.remove("Closed");
+      menu.classList.add("Opened");
+    }
+  });
+}
+
+/**
+ * Main initialization function
+ * Initializes all features when DOM is ready
+ */
+function init() {
+  const pricingDataUrl =
+    config.api?.pricingDataUrl || "/data/Pricing.json";
+
+  // Render pricing cards
+  renderPricingCards(pricingDataUrl);
+
+  // Initialize mobile menu
+  initializeMobileMenu();
+}
+
+// Initialize when DOM is ready
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", init);
+} else {
+  init();
+}

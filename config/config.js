@@ -27,7 +27,7 @@ const config = {
     signUpError: "An error occurred during sign up. Please try again.",
   },
   constants: {
-    alertDuration: 3000,校对
+    alertDuration: 3000,
     redirectDelay: 2000,
     pricingCurrency: "R",
     pricingPeriod: "/mo",
