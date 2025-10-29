@@ -1,9 +1,4 @@
-/**
- * Application Configuration
- * Environment-specific settings should be loaded from environment variables
- * Never commit sensitive data to version control
- */
-
+// app config
 const config = {
   firebase: {
     apiKey:
@@ -23,7 +18,7 @@ const config = {
     clientId:
       process.env.PAYPAL_CLIENT_ID ||
       "AVJp2CuGgypueHwV-1_NemjbVdfkUc2Puq_UOEah7OdcqZOohz05nQGzrOgE-PwQoBUtdHsKNmWVhrZb",
-    environment: process.env.PAYPAL_ENVIRONMENT || "sandbox", // 'sandbox' or 'production'
+    environment: process.env.PAYPAL_ENVIRONMENT || "sandbox",
   },
   api: {
     pricingDataUrl: "/data/Pricing.json",
@@ -42,22 +37,20 @@ const config = {
   },
   security: {
     allowedOrigins: [
-      // Add your allowed origins here
-      // "https://yourdomain.com",
-      // "https://www.yourdomain.com",
+      // add your domains here
     ],
-    csrfTokenExpiry: 3600, // 1 hour in seconds
+    csrfTokenExpiry: 3600,
     enableCSRFProtection: true,
     enableCORS: true,
   },
 };
 
-// Export for use in modules (if using ES6 modules)
+// export for modules
 if (typeof module !== "undefined" && module.exports) {
   module.exports = config;
 }
 
-// Make config available globally for browser scripts
+// make available globally
 if (typeof window !== "undefined") {
   window.APP_CONFIG = config;
 }
