@@ -163,7 +163,7 @@ main {
 }
 .right {
   background-image: linear-gradient(rgba(8, 19, 39, 0.7), rgba(5, 39, 117, 0.7)),
-    url("/public/images/top-developers.png");
+    url("../public/images/top-developers.png");
   background-size: cover;
   background-position: center;
   background-blend-mode: darken;
