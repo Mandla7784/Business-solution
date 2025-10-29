@@ -16,7 +16,6 @@ const config = {
   paypal: {
     clientId: process.env.PAYPAL_CLIENT_ID || "AVJp2CuGgypueHwV-1_NemjbVdfkUc2Puq_UOEah7OdcqZOohz05nQGzrOgE-PwQoBUtdHsKNmWVhrZb",
     environment: process.env.PAYPAL_ENVIRONMENT || "sandbox", // 'sandbox' or 'production'
-Adam_Brown
   },
   api: {
     pricingDataUrl: "/data/Pricing.json",
