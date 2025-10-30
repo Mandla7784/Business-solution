@@ -13,7 +13,7 @@ if (!firebase.apps.length) {
 }
 
 const auth = firebase.auth();
-const config = window.APP_CONFIG || {};
+const appConfig = window.APP_CONFIG || {};
 
 // show alert message
 function showAlert(message, type = "info") {
@@ -42,7 +42,7 @@ function showAlert(message, type = "info") {
 
   document.body.prepend(alertBadge);
 
-  const duration = config.constants?.alertDuration || 3000;
+  const duration = appConfig.constants?.alertDuration || 3000;
   setTimeout(() => {
     if (alertBadge.parentNode) {
       alertBadge.remove();
@@ -60,16 +60,23 @@ function getErrorMessage(error) {
     "auth/user-not-found": "No account found with this email address.",
     "auth/wrong-password": "Incorrect password. Please try again.",
     "auth/email-already-in-use": "This email is already registered.",
-    "auth/weak-password": "Password is too weak. Please use a stronger password.",
+    "auth/weak-password":
+      "Password is too weak. Please use a stronger password.",
     "auth/invalid-email": "Please enter a valid email address.",
     "auth/operation-not-allowed": "This sign-in method is not enabled.",
-    "auth/network-request-failed": "Network error. Please check your connection.",
+    "auth/network-request-failed":
+      "Network error. Please check your connection.",
     "auth/popup-closed-by-user": "Sign-in window was closed. Please try again.",
     "auth/cancelled-popup-request": "Sign-in request was cancelled.",
-    "auth/popup-blocked": "Pop-up was blocked. Please allow pop-ups and try again.",
+    "auth/popup-blocked":
+      "Pop-up was blocked. Please allow pop-ups and try again.",
   };
 
-  return errorMessages[error.code] || error.message || "An error occurred. Please try again.";
+  return (
+    errorMessages[error.code] ||
+    error.message ||
+    "An error occurred. Please try again."
+  );
 }
 
 // validate email
@@ -107,7 +114,7 @@ function signInWithGoogle() {
         const welcomeMessage = `Welcome ${user.displayName || user.email}!`;
         showAlert(welcomeMessage, "success");
 
-        const redirectDelay = config.constants?.redirectDelay || 2000;
+        const redirectDelay = appConfig.constants?.redirectDelay || 2000;
         setTimeout(() => {
           window.location.href = "/html/index.html";
         }, redirectDelay);
@@ -150,12 +157,13 @@ function signInWithEmail() {
       .signInWithEmailAndPassword(email, password)
       .then((credentials) => {
         const user = credentials.user;
-        const successMessage = config.messages?.loginSuccess || "Login Successful!";
+        const successMessage =
+          appConfig.messages?.loginSuccess || "Login Successful!";
         showAlert(successMessage, "success");
 
         setTimeout(() => {
           window.location.href = "/html/index.html";
-        }, config.constants?.redirectDelay || 2000);
+        }, appConfig.constants?.redirectDelay || 2000);
       })
       .catch((error) => {
         const errorMessage = getErrorMessage(error);
@@ -185,7 +193,7 @@ function signInWithFacebook() {
         const welcomeMessage = `Welcome ${user.displayName || user.email}!`;
         showAlert(welcomeMessage, "success");
 
-        const redirectDelay = config.constants?.redirectDelay || 2000;
+        const redirectDelay = appConfig.constants?.redirectDelay || 2000;
         setTimeout(() => {
           window.location.href = "/html/index.html";
         }, redirectDelay);

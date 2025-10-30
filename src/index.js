@@ -1,4 +1,4 @@
-const config = window.APP_CONFIG || {};
+const appConfig = window.APP_CONFIG || {};
 
 // fetch pricing data
 async function fetchPricingData(url) {
@@ -35,8 +35,8 @@ function createPricingCard({ heading, price, description, btnText }) {
 
   const priceElement = document.createElement("h1");
   priceElement.className = "pricing-card-price";
-  const currency = config.constants?.pricingCurrency || "R";
-  const period = config.constants?.pricingPeriod || "/mo";
+  const currency = appConfig.constants?.pricingCurrency || "R";
+  const period = appConfig.constants?.pricingPeriod || "/mo";
   priceElement.textContent =
     price === "text us" ? price : `${currency}${price}${period}`;
   card.appendChild(priceElement);
@@ -144,7 +144,7 @@ function initializeMobileMenu() {
 
 // init everything
 function init() {
-  const pricingDataUrl = config.api?.pricingDataUrl || "/data/Pricing.json";
+  const pricingDataUrl = appConfig.api?.pricingDataUrl || "/data/Pricing.json";
   renderPricingCards(pricingDataUrl);
   initializeMobileMenu();
 }
