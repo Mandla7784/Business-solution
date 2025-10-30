@@ -412,7 +412,7 @@ section {
 }
 
 @media screen and (max-width: 900px) {
-  .menuItems {
+  nav .menuItems {
     display: none;
     align-items: start !important;
     justify-content: start !important;
@@ -425,13 +425,13 @@ section {
     transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
 
-  .menuItems.Opened {
+  nav .menuItems.Opened {
     display: flex;
     transform: translateX(0);
     opacity: 1;
   }
 
-  .menuItems.Closed {
+  nav .menuItems.Closed {
     transform: translateX(-100%);
     opacity: 0;
   }

@@ -88,19 +88,56 @@ function initializeMobileMenu() {
     return;
   }
 
-  menuIcon.addEventListener("click", () => {
-    const isMenuOpened = menuIcon.classList.contains("fa-x");
+  const setClosed = () => {
+    menuIcon.classList.remove("fa-x");
+    menuIcon.classList.add("fa-bars");
+    menu.classList.add("Closed");
+    menu.classList.remove("Opened");
+  };
 
+  const setOpened = () => {
+    menuIcon.classList.remove("fa-bars");
+    menuIcon.classList.add("fa-x");
+    menu.classList.remove("Closed");
+    menu.classList.add("Opened");
+  };
+
+  // Ensure consistent initial state based on viewport
+  if (window.matchMedia("(max-width: 900px)").matches) {
+    setClosed();
+  } else {
+    // On desktop, ensure menu is controlled by CSS (no mobile classes)
+    menu.classList.remove("Closed", "Opened");
+    menuIcon.classList.remove("fa-x");
+    menuIcon.classList.add("fa-bars");
+  }
+
+  // Toggle on icon click
+  menuIcon.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isMenuOpened = menuIcon.classList.contains("fa-x");
     if (isMenuOpened) {
+      setClosed();
+    } else {
+      setOpened();
+    }
+  });
+
+  // Close when clicking outside on mobile
+  document.addEventListener("click", () => {
+    if (window.matchMedia("(max-width: 900px)").matches) {
+      setClosed();
+    }
+  });
+
+  // Handle responsive transitions between mobile and desktop
+  window.addEventListener("resize", () => {
+    if (window.matchMedia("(max-width: 900px)").matches) {
+      setClosed();
+    } else {
+      menu.classList.remove("Closed", "Opened");
       menuIcon.classList.remove("fa-x");
       menuIcon.classList.add("fa-bars");
-      menu.classList.add("Closed");
-      menu.classList.remove("Opened");
-    } else {
-      menuIcon.classList.remove("fa-bars");
-      menuIcon.classList.add("fa-x");
-      menu.classList.remove("Closed");
-      menu.classList.add("Opened");
     }
   });
 }
