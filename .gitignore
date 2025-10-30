@@ -25,3 +25,4 @@ npm-debug.log*
 dist/
 build/
 server-security.js
+README-FB-AUTH.md
