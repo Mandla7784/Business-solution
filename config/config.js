@@ -37,6 +37,7 @@
     security: {
       allowedOrigins: [
         // add your domains here
+        "https://mandladyonase-pentasolution-landingp.netlify.app",
       ],
       csrfTokenExpiry: 3600,
       enableCSRFProtection: true,
